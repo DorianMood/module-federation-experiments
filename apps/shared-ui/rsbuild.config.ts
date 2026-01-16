@@ -23,4 +23,8 @@ export default defineConfig({
     }),
   ],
   server: { port: 3001 },
+  output: {
+    // БЕЗ ЭТОГО в режиме preview/prod хост будет искать чанки на своем порту (3000)
+    assetPrefix: "http://localhost:3001/",
+  },
 });

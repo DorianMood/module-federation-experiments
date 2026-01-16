@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm --filter \"./apps/**\" dev",
+    "build": "pnpm -r build",
+    "preview": "pnpm -r --parallel preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
