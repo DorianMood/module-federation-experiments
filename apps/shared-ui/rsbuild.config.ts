@@ -4,7 +4,7 @@ import { pluginModuleFederation } from "@module-federation/rsbuild-plugin";
 
 export default defineConfig({
   plugins: [
-    pluginReact(),
+    pluginReact({}),
     pluginModuleFederation({
       name: "shared_ui",
       exposes: {
@@ -12,19 +12,36 @@ export default defineConfig({
       },
       shared: {
         react: {
-          eager: true,
           singleton: true,
+          requiredVersion: "^19.0.0",
         },
         "react-dom": {
-          eager: true,
           singleton: true,
+          requiredVersion: "^19.0.0",
         },
       },
     }),
   ],
   server: { port: 3001 },
   output: {
-    // БЕЗ ЭТОГО в режиме preview/prod хост будет искать чанки на своем порту (3000)
     assetPrefix: "http://localhost:3001/",
+  },
+  performance: {
+    chunkSplit: {
+      strategy: "custom",
+      splitChunks: {
+        cacheGroups: {
+          reactVendor: {
+            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            name: "react-vendor",
+            chunks: "all",
+            // Ставим приоритет выше, чем у обычных вендоров
+            priority: 40,
+            // Переиспользование чанка (важно для кэша)
+            enforce: true,
+          },
+        },
+      },
+    },
   },
 });
