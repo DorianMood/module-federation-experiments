@@ -11,7 +11,11 @@ export default defineConfig({
         shared_ui: "shared_ui@http://localhost:3001/mf-manifest.json",
       },
       dts: true,
-      shared: {},
+      shared: {
+        react: {
+          singleton: true,
+        },
+      },
     }),
   ],
   server: { port: 3019 },
