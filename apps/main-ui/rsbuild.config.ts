@@ -19,18 +19,12 @@ export default defineConfig({
       dts: true,
       shared: {
         react: {
-          eager: false,
           singleton: true,
-          requiredVersion: "^19.0.0",
-          strictVersion: true,
-          // shareKey: "react-18",
+          requiredVersion: "^18.3.1 || ^19.0.0",
         },
         "react-dom": {
-          eager: false,
           singleton: true,
-          requiredVersion: "^19.0.0",
-          strictVersion: true,
-          // shareKey: "react-18",
+          requiredVersion: "^18.3.1 || ^19.0.0",
         },
         // Добавляем эти два ключа:
         "react/jsx-runtime": {
