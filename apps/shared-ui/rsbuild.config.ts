@@ -7,6 +7,7 @@ export default defineConfig({
     pluginReact({}),
     pluginModuleFederation({
       name: "shared_ui",
+      filename: "remote-entry.js",
       exposes: {
         "./Button": "./src/components/Button.tsx",
       },
@@ -14,12 +15,17 @@ export default defineConfig({
         react: {
           singleton: true,
           requiredVersion: "^19.0.0",
+          strictVersion: false,
+          shareScope: "default",
         },
         "react-dom": {
           singleton: true,
           requiredVersion: "^19.0.0",
+          strictVersion: false,
+          shareScope: "default",
         },
       },
+      // dev: true,
     }),
   ],
   server: { port: 3001 },
@@ -39,6 +45,7 @@ export default defineConfig({
             priority: 40,
             // Переиспользование чанка (важно для кэша)
             enforce: true,
+            reuseExistingChunk: true,
           },
         },
       },
