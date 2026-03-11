@@ -1,5 +1,5 @@
 {
-  "name": "vendor-react-19",
+  "name": "shared-runtime-consumer-react-19",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -13,7 +13,6 @@
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@module-federation/rsbuild-plugin": "^0.22.1",
     "@rsbuild/core": "^1.7.1",
     "@rsbuild/plugin-react": "^1.4.2",
     "@types/react": "^19.2.7",
